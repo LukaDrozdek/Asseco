@@ -1,0 +1,168 @@
+﻿@model Asseco.Models.UserInformation
+
+
+<form method="post">
+    <div class="container border mb-3 p-3">
+
+        <div class="container">
+            <div class="row">
+                <h1 class="text-primary">User details</h1>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Name"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Name" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Lastname"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Lastname" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-3">
+                <label asp-for="Email"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Email" class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="container border mb-3 p-3">
+
+        <div class="row">
+            <h1 class="text-primary">Adrdress</h1>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="City"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="City" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Street"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Street" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Suite"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Suite" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Zipcode"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Zipcode" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Lat"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Lat" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-3">
+                <label asp-for="Lng"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Lng" class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="container border p-3">
+
+        <div class="row">
+            <h1 class="text-primary">Company</h1>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Phone"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Phone" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="Website"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Website" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="CompanyName"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="CompanyName" class="form-control"/>
+            </div>
+        </div>
+
+         <div class="row mb-3">
+            <div class="col-3">
+                <label asp-for="CompanyCatchPhrase"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="CompanyCatchPhrase" class="form-control"/>
+            </div>
+        </div>
+
+          <div class="row">
+            <div class="col-3">
+                <label asp-for="Bs"></label>
+            </div>
+            <div class="col-9">
+                <input asp-for="Bs" class="form-control"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-3">
+        <input asp-for="Id" hidden />
+        <div class="row">
+            <div class="col-4">
+                <a asp-action="Index" class="btn btn-primary w-100">Back</a>
+            </div>
+            <div class="col-4">
+                <button type="submit" asp-action="Edit" class="btn btn-success w-100">Edit</button>
+            </div>
+            <div class="col-4">
+                <button type="submit" asp-action="Delete" class="btn btn-danger w-100">Delete</button>
+            </div>
+        </div>
+    </div>
+</form>
