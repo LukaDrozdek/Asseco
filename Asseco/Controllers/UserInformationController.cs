@@ -21,19 +21,22 @@ namespace Asseco.Controllers
             return View(userList);
         }
 
+        [HttpGet("limit")]
         public IActionResult Create()
         {
             return View("Create");
         }
 
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(UserInformation? obj)
+        public IActionResult CreatePost(UserInformation? obj)
         {
             _db.UserInformation.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         public IActionResult Details(int? Id)
         {
@@ -70,6 +73,11 @@ namespace Asseco.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult SearchForBizMail()
+        {
+            var biz = from g in _db.UserInformation where g.Email.Contains("biz") select g;
+            return View(biz);
+        }
 
     }
 }
