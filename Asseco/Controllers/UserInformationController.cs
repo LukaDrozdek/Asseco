@@ -57,7 +57,7 @@ namespace Asseco.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(UserInformation obj)
+        public IActionResult EditPost(UserInformation obj)
         {
             _db.UserInformation.Update(obj);
             _db.SaveChanges();
@@ -66,7 +66,7 @@ namespace Asseco.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(UserInformation obj)
+        public IActionResult DeletePost(UserInformation obj)
         {
             _db.UserInformation.Remove(obj);
             _db.SaveChanges();

@@ -4,7 +4,7 @@
 
 namespace Asseco.Migrations
 {
-    public partial class Add_User_Information : Migration
+    public partial class AddUserInformation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,17 +17,17 @@ namespace Asseco.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lastname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Suite = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Zipcode = table.Column<int>(type: "int", nullable: false),
-                    Lat = table.Column<int>(type: "int", nullable: false),
-                    Lng = table.Column<int>(type: "int", nullable: false),
-                    Phone = table.Column<int>(type: "int", nullable: false),
-                    Website = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CompanyCatchPhrase = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Bs = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Suite = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Zipcode = table.Column<int>(type: "int", nullable: true),
+                    Lat = table.Column<int>(type: "int", nullable: true),
+                    Lng = table.Column<int>(type: "int", nullable: true),
+                    Phone = table.Column<int>(type: "int", nullable: true),
+                    Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyCatchPhrase = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Bs = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

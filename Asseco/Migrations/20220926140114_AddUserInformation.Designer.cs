@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Asseco.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220923231317_Add_Null_in_Database")]
-    partial class Add_Null_in_Database
+    [Migration("20220926140114_AddUserInformation")]
+    partial class AddUserInformation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
