@@ -1,11 +1,6 @@
 ﻿using Asseco.Data;
 using Asseco.Models;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
-using MailKit.Net.Smtp;
-using System.Net;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Asseco.Controllers
 {
@@ -13,7 +8,8 @@ namespace Asseco.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-
+        public JsonController jsonController = new JsonController();
+        public EmailController emailController = new EmailController();
 
 
         public UserInformationController(ApplicationDbContext db)
@@ -21,7 +17,6 @@ namespace Asseco.Controllers
             _db = db;
         }
 
-        public JsonController jsonController = new JsonController();
         
 
         public IActionResult Index()
@@ -32,6 +27,9 @@ namespace Asseco.Controllers
         }
 
         
+
+        // Create
+
         [HttpGet("Limit")]
         public IActionResult Create()
         {
@@ -43,13 +41,17 @@ namespace Asseco.Controllers
         public IActionResult CreatePost(UserInformation? obj)
         {
 
-            //jsonController.Json(obj);
+            jsonController.Json(obj);
             _db.UserInformation.Add(obj);
             _db.SaveChanges();
-            //Email(obj);
+            emailController.Email(obj);
             return RedirectToAction("Index");
 
         }
+
+
+
+        // Details
 
         public IActionResult Details(int? Id)
         {
@@ -68,6 +70,9 @@ namespace Asseco.Controllers
             return View(obj);
         }
 
+
+        // Edit
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult EditPost(UserInformation obj)
@@ -75,10 +80,12 @@ namespace Asseco.Controllers
             jsonController.Json(obj);
             _db.UserInformation.Update(obj);
             _db.SaveChanges();
-            //Email(obj);
+            emailController.Email(obj);
             return RedirectToAction("Index");
         }
 
+
+        // Delete
 
         public IActionResult Delete(int? Id)
         {
@@ -106,53 +113,13 @@ namespace Asseco.Controllers
             return RedirectToAction("Index");
         }
 
+
+        // .biz Mail
+
         public IActionResult SearchForBizMail()
         {
             var biz = from g in _db.UserInformation where g.Email.EndsWith(".biz") select g;
             return View(biz);
         }
-
-
-        public void Email(UserInformation obj)
-        {
-
-            //Mail message
-            var message = new MimeMessage();
-
-            //Mail Content
-            message.From.Add(MailboxAddress.Parse("luka04111993@gmail.com"));
-            message.To.Add(MailboxAddress.Parse("luka04111993@gmail.com"));
-            message.Subject = "Asseco";
-            message.Body = new TextPart(MimeKit.Text.TextFormat.Html)
-            {
-                Text = "Name: " + obj.Name +
-                       "Lastname: " + obj.Lastname +
-                       "Email: " + obj.Email +
-                       "City: " + obj.City +
-                       "Street: " + obj.Street +
-                       "Suite: " + obj.Suite +
-                       "Zipcode: " + obj.Zipcode +
-                       "Lat: " + obj.Lat +
-                       "Lng: " + obj.Lng +
-                       "Phone: " + obj.Phone +
-                       "Website: " + obj.Website +
-                       "CompanyName: " + obj.CompanyName +
-                       "CompanyCatchPhrase: " + obj.CompanyCatchPhrase +
-                       "Bs: " + obj.Bs
-            };
-
-            //Server details
-            using var smtp = new SmtpClient();
-            smtp.Connect("smtp.email.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-
-            //Credentails
-            smtp.Authenticate("augustine.bauch17@ethereal.email", "cTn5pq2AgfHfmJVEQh");
-
-            //SendEmail
-            smtp.Send(message);
-            smtp.Disconnect(true); 
-
-        }
-
     }
 }
