@@ -21,12 +21,12 @@ namespace Asseco.Models
         public string? Street { get; set; }
         public string? Suite { get; set; }
         public string? City { get; set; }
-        public int? Zipcode { get; set; }
-        public int? Lat { get; set; }
-        public int? Lng { get; set; }
+        public string? Zipcode { get; set; }
+        public float? Lat { get; set; }
+        public float? Lng { get; set; }
 
 
-        public int? Phone { get; set; }
+        public string? Phone { get; set; }
         public string? Website { get; set; }
 
         [Display(Name= "Company Name")]
