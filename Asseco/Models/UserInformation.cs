@@ -11,6 +11,7 @@ namespace Asseco.Models
         public string Name { get; set; }
 
         [Required]
+        [Display(Name="Username")]
         public string Lastname { get; set; }
 
         [Required]
